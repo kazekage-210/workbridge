@@ -1,2 +1,35 @@
-# workbridge
-「夜に孤独でも、ここに来れば仲間や社会、仕事とつながれる」英語補足：「A night-only safe job &amp; community platform for people with gaps, isolation, or disabilities.」
+# WorkBridge
+
+**「孤独な夜でも、ここに来れば仲間や社会、仕事とつながれる」**
+
+---
+
+## 🎯 Mission
+孤独やブランクを抱える人（無職・ひきこもり・障害者・精神不調など）が、  
+安心して社会や仕事につながれる「夜型セーフティーネット型求人＆コミュニティ」プラットフォーム。
+
+---
+
+## 🚀 MVP機能（第一段階）
+- 求人CRUD（作成/閲覧/更新/削除）
+- 求人検索・絞り込み（リモート、週時間、雇用形態など）
+- 匿名プロフィール（名前不要で登録可）
+- 夜チェックイン（夜だけ投稿できる一言機能）
+- 匿名掲示板（カテゴリ別の情報交換）
+- 通報・非表示（安全確保）
+
+---
+
+## 🛠 技術スタック（予定）
+- Frontend: Next.js (React, TypeScript)
+- Backend & DB: Supabase (PostgreSQL, Auth)
+- Hosting: Vercel
+- Future: AIマッチング（OpenAI API活用予定）
+
+---
+
+## 📌 Roadmap
+- Week1–2: 求人CRUD, 検索, 匿名プロフィール
+- Week3–4: 夜チェックイン, 掲示板
+- Week5: 管理ダッシュボード, UI改善
+- After: 協力者や支援者に見せるデモ公開
