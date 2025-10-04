@@ -1,49 +1,36 @@
-# 🌙 WorkBridge
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-**「孤独な夜でも、ここに来れば仲間や社会、仕事とつながれる」**
+## Getting Started
 
----
+First, run the development server:
 
-## 🎯 Mission
-孤独やブランクを抱える人（無職・ひきこもり・障害者・精神不調の方など）が、  
-安心して社会や仕事につながれる「夜型セーフティーネット型求人＆コミュニティ」プラットフォーム。
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
----
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## 🚀 MVP機能（第一段階）
-- ✅ 求人CRUD（作成/閲覧/更新/削除）
-- ✅ 求人検索・絞り込み（リモート、週時間、雇用形態など）
-- ✅ 匿名プロフィール（名前不要で登録可）
-- ✅ 夜チェックイン（夜だけ投稿できる一言機能）
-- ✅ 匿名掲示板（カテゴリ別の情報交換）
-- ✅ 通報・非表示（安全確保）
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-👉 **まずはシンプルな求人CRUDと匿名プロフィールから着手予定**
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
----
+## Learn More
 
-## 🛠 技術スタック（予定）
-- **Frontend**: Next.js (React, TypeScript, Tailwind CSS)
-- **Backend & DB**: Supabase (PostgreSQL, Auth, Storage)
-- **Hosting**: Vercel (デプロイ無料枠)
-- **Future**: OpenAI API を活用した AI マッチング・サポート機能
+To learn more about Next.js, take a look at the following resources:
 
----
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-## 📌 Roadmap
-- **Week1–2**: 求人CRUD, 検索, 匿名プロフィール  
-- **Week3–4**: 夜チェックイン, 掲示板  
-- **Week5**: 管理ダッシュボード, UI改善  
-- **After**: 協力者や支援者にデモ公開、意見を集めながら改善  
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
----
+## Deploy on Vercel
 
-## 🤝 Contribution
-このリポジトリはまだプロトタイプ段階です。  
-興味を持ってくださった方は Issue で意見・改善提案を歓迎します。  
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
----
-
-## ⚖️ License
-MIT License  
-※ このコードは学習・プロトタイプ目的です。本番環境利用には追加の調整が必要です。
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
