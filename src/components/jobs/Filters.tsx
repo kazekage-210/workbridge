@@ -18,7 +18,7 @@ export function Filters({ query = "" }: FiltersProps) {
   }, [query]);
 
   const updateQueryParam = (nextValue: string) => {
-    const params = new URLSearchParams(searchParams);
+    const params = new URLSearchParams(searchParams.toString());
 
     if (nextValue.trim()) {
       params.set("q", nextValue);
@@ -38,7 +38,7 @@ export function Filters({ query = "" }: FiltersProps) {
 
   return (
     <div className="flex flex-col gap-2">
-      <label htmlFor="job-search" className="text-sm font-medium text-slate-700">
+      <label htmlFor="job-search" className="text-sm font-medium text-gray-700">
         キーワードで検索
       </label>
       <input
@@ -47,7 +47,7 @@ export function Filters({ query = "" }: FiltersProps) {
         value={value}
         onChange={handleChange}
         placeholder="タイトル・会社名・説明を検索"
-        className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 shadow-sm focus:border-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-900/10"
+        className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 shadow-sm focus:border-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-900/10"
       />
     </div>
   );

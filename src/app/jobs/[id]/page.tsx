@@ -1,77 +1,66 @@
 import { notFound } from "next/navigation";
 
-const jobs: Record<
-  string,
-  {
-    title: string;
-    location: string;
-    description: string;
-    responsibilities: string[];
-    requirements: string[];
-  }
-> = {
-  "senior-frontend-engineer": {
-    title: "シニアフロントエンドエンジニア",
-    location: "東京 / フルリモート可",
-    description:
-      "迅速にプロダクト価値を届けるため、Design System とフロントエンド基盤づくりを推進します。",
-    responsibilities: [
-      "Next.js / TypeScript を用いた新機能開発・改善",
-      "デザイナーやバックエンドとの協業による仕様策定",
-      "UX 向上のための計測・検証サイクルの構築",
-    ],
-    requirements: [
-      "React / Next.js を用いた3年以上の開発経験",
-      "Tailwind CSS などのモダンCSSツールの実務経験",
-      "プロダクト視点で意思決定できるコミュニケーション力",
-    ],
-  },
-};
-
-export function generateStaticParams() {
-  return Object.keys(jobs).map((id) => ({ id }));
-}
+import { Container } from "@/components/Container";
+import { formatDate } from "@/lib/format";
+import { findStaticJobById } from "@/lib/jobs";
 
 type JobDetailPageProps = {
   params: { id: string };
 };
 
 export default function JobDetailPage({ params }: JobDetailPageProps) {
-  const job = jobs[params.id];
+  const job = findStaticJobById(params.id);
 
   if (!job) {
     notFound();
   }
 
   return (
-    <section className="mx-auto flex min-h-[60vh] max-w-4xl flex-col gap-10 px-6 py-16 md:py-24">
-      <header className="space-y-3">
-        <h1 className="text-4xl font-semibold text-gray-900 md:text-5xl">
-          {job.title}
-        </h1>
-        <p className="text-sm font-medium text-gray-500">{job.location}</p>
-        <p className="text-lg text-gray-600">{job.description}</p>
-      </header>
+    <Container>
+      <section className="mx-auto flex max-w-3xl flex-col gap-10">
+        <header className="space-y-3">
+          <span className="text-sm font-semibold uppercase tracking-widest text-gray-500">
+            {job.company}
+          </span>
+          <h1 className="text-4xl font-semibold text-gray-900">{job.title}</h1>
+          {(job.location || job.employmentType) && (
+            <p className="text-sm text-gray-600">
+              {[job.location, job.employmentType].filter(Boolean).join(" ・ ")}
+            </p>
+          )}
+          <p className="text-sm text-gray-500">掲載日: {formatDate(job.publishedAt)}</p>
+          <p className="text-base text-gray-700">{job.description}</p>
+        </header>
 
-      <div className="grid gap-12 md:grid-cols-2">
-        <section className="space-y-4">
-          <h2 className="text-xl font-semibold text-gray-900">主な業務内容</h2>
-          <ul className="list-disc space-y-2 pl-5 text-gray-700">
-            {job.responsibilities.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </section>
+        {job.tags && job.tags.length > 0 && (
+          <section className="space-y-3">
+            <h2 className="text-lg font-semibold text-gray-900">求めるスキル</h2>
+            <ul className="flex flex-wrap gap-2">
+              {job.tags.map((tag) => (
+                <li
+                  key={tag}
+                  className="rounded-full bg-gray-100 px-3 py-1 text-xs font-semibold text-gray-600"
+                >
+                  {tag}
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
 
-        <section className="space-y-4">
-          <h2 className="text-xl font-semibold text-gray-900">必須要件</h2>
-          <ul className="list-disc space-y-2 pl-5 text-gray-700">
-            {job.requirements.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </section>
-      </div>
-    </section>
+        {job.applyUrl && (
+          <div>
+            <a
+              href={job.applyUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center justify-center rounded-md bg-gray-900 px-6 py-3 text-sm font-medium text-white transition hover:bg-gray-700"
+            >
+              応募ページへ進む
+            </a>
+          </div>
+        )}
+      </section>
+    </Container>
   );
 }
