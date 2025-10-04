@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌉 WorkBridge (Prototype)
 
-## Getting Started
+> **⚠️ 注意**: このリポジトリは **個人学習・試作用** のプロジェクトです。  
+> 本番運用や商業利用を目的としたものではありません。  
 
-First, run the development server:
+WorkBridge は、Next.js と TypeScript の学習を目的に開発している **求人 × コミュニティの試作アプリ** です。  
+「孤独な夜でも仲間や社会とつながれる」というコンセプトをテーマに、勉強しながら実装しています。  
+
+---
+
+## 🎯 学習テーマ
+- Next.js 14 (App Router) の理解
+- TypeScript と Tailwind CSS の実践
+- フロントエンドでのフォーム処理（react-hook-form + zod）
+- Supabase を使った簡単なバックエンド体験（今後予定）
+
+---
+
+## 🚀 現在できること（MVP）
+- **ナビゲーション**: `/`, `/jobs`, `/post`
+- **求人一覧**: `/jobs`  
+  - モックデータから3件表示  
+  - 検索 (`?q=`) で部分一致フィルタ
+- **求人詳細**: `/jobs/[id]`  
+  - 存在しないIDは404
+- **新規投稿フォーム**: `/jobs/new`  
+  - 現在は localStorage 保存 & alert 表示  
+  - 将来的に Supabase へ接続予定
+- **エラーページ**: `not-found.tsx`, `error.tsx`
+
+---
+
+## 🛠 技術スタック
+- **Framework**: Next.js 14+ (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Lint/Format**: ESLint + Prettier
+- **DB (予定)**: Supabase
+- **Deploy (予定)**: Vercel
+
+---
+
+## 📦 セットアップ方法
 
 ```bash
+# リポジトリをクローン
+git clone https://github.com/kazekage-210/workbridge.git
+cd workbridge
+
+# 依存関係インストール
+npm install
+
+# 開発サーバー起動
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+→ http://localhost:3000 で確認できます。
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+🗺 今後の学習ステップ
+README整理 ✅
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+フォームを react-hook-form + zod でバリデーション強化
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Supabase との接続（試験的に）
 
-## Learn More
+認証の導入（Auth）
 
-To learn more about Next.js, take a look at the following resources:
+shadcn/ui でUI改善
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Vercelに試作デプロイ
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+📜 License
+MIT License
+※ 学習目的での利用・改変はご自由にどうぞ。
