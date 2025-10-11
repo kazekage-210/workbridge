@@ -7,7 +7,7 @@ export default function Footer() {
         <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
           <p className="font-medium text-slate-700 dark:text-slate-200">Workbridge</p>
           <p className="text-slate-600 dark:text-slate-300">
-            © {new Date().getFullYear()} Workbridge Inc. All rights reserved.
+            Workbridge Prototype / Non-Commercial Demo © 2025 Workbridge Lab. All rights reserved.
           </p>
         </div>
       </Container>
