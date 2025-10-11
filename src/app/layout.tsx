@@ -34,7 +34,7 @@ const themeInitScript = `(() => {
 })();`;
 
 export const metadata: Metadata = {
-  title: "Workbridge",
+  title: "Workbridge（非商用デモ）",
   description: "Hiring platform MVP for teams and candidates.",
 };
 

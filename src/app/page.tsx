@@ -13,6 +13,9 @@ export default function Home() {
           <h1 className="text-4xl font-semibold leading-snug tracking-tight text-slate-900 sm:text-5xl dark:text-slate-50">
             夜の静けさに寄り添う、やわらかな採用プラットフォーム
           </h1>
+          <p className="text-xs text-slate-500 dark:text-slate-300">
+            ※このサイトは個人による非商用の実験デモです。実際の求人募集・応募機能は含まれていません。
+          </p>
           <p className="mx-auto max-w-2xl text-base leading-relaxed text-slate-600 sm:mx-0 sm:text-lg dark:text-slate-200">
             Workbridgeは求人の公開から応募管理までをまとめてサポート。目に優しいインターフェースで、集中力を保ちながら最適な人材を迎え入れましょう。
           </p>
