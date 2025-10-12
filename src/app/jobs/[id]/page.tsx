@@ -2,14 +2,19 @@ import { notFound } from "next/navigation";
 
 import { Container } from "@/components/Container";
 import { formatDate } from "@/lib/format";
-import { findStaticJobById } from "@/lib/jobs";
+import { findStaticJobById, getStaticJobs } from "@/lib/jobs";
 
 type JobDetailPageProps = {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 };
 
-export default function JobDetailPage({ params }: JobDetailPageProps) {
-  const job = findStaticJobById(params.id);
+export function generateStaticParams() {
+  return getStaticJobs().map((job) => ({ id: job.id }));
+}
+
+export default async function JobDetailPage({ params }: JobDetailPageProps) {
+  const { id } = await params;
+  const job = findStaticJobById(id);
 
   if (!job) {
     notFound();

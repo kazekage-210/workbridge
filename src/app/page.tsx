@@ -22,7 +22,7 @@ export default function Home() {
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
             <Link
               href="/jobs"
-              className="inline-flex items-center justify-center rounded-2xl border border-transparent bg-[#1c2743] px-7 py-3 text-sm font-semibold text-slate-100 shadow-sm transition hover:bg-[#233052] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-500/70 dark:bg-slate-200 dark:text-slate-900 dark:hover:bg-slate-100 dark:focus-visible:ring-slate-300/70"
+              className="inline-flex items-center justify-center rounded-2xl border border-slate-300/80 px-7 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-500/60 dark:border-slate-700 dark:text-slate-100 dark:hover:bg-slate-800/70"
             >
               求人を探す
             </Link>
