@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 
 import { Container } from "@/components/Container";
@@ -17,7 +17,17 @@ const toJobList = (storedJobs: StoredJob[]): Job[] => {
   return storedJobs.map((job) => ({ ...job, source: "local" as const }));
 };
 
+// Suspenseでラップしたトップコンポーネント
 const JobsPage = () => {
+  return (
+    <Suspense fallback={<div>Loading jobs...</div>}>
+      <JobsPageContent />
+    </Suspense>
+  );
+};
+
+// useSearchParams等のカスタムロジック部分は分離
+function JobsPageContent() {
   const searchParams = useSearchParams();
   const query = searchParams.get("q") ?? "";
   const [storedJobs, setStoredJobs] = useState<StoredJob[]>([]);
@@ -25,7 +35,6 @@ const JobsPage = () => {
   useEffect(() => {
     setStoredJobs(loadStoredJobs());
     const unsubscribe = subscribeToStoredJobs(setStoredJobs);
-
     return unsubscribe;
   }, []);
 
@@ -41,7 +50,9 @@ const JobsPage = () => {
           <span className="text-sm font-semibold uppercase tracking-widest text-gray-500">
             Open Roles
           </span>
-          <h1 className="text-3xl font-bold text-gray-900">Join the Workbridge team</h1>
+          <h1 className="text-3xl font-bold text-gray-900">
+            Join the Workbridge team
+          </h1>
           <p className="text-base text-gray-600">
             Explore the latest roles across product, engineering, and community. Each listing includes a direct link to apply.
           </p>
@@ -51,7 +62,9 @@ const JobsPage = () => {
 
         <section className="grid gap-6">
           {jobs.length > 0 ? (
-            jobs.map((job) => <JobCard key={`${job.source}-${job.id}`} job={job} />)
+            jobs.map((job) => (
+              <JobCard key={`${job.source}-${job.id}`} job={job} />
+            ))
           ) : (
             <p className="rounded-xl border border-dashed border-gray-300 bg-white p-8 text-center text-sm text-gray-600">
               条件に一致する求人が見つかりませんでした。
@@ -61,6 +74,6 @@ const JobsPage = () => {
       </main>
     </Container>
   );
-};
+}
 
 export default JobsPage;
